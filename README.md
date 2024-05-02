@@ -1,39 +1,53 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# Film Generator 
+## Descripción
+Films Generator API es una aplicación backend desarrollada con NestJS que permite gestionar una base de datos de películas. La API cuenta con un sistema de autenticación y autorización basado en roles, permitiendo a los usuarios regulares y administradores acceder a diferentes funcionalidades.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Características principales:
+- La API está desplegada en Vercel y se puede acceder en la siguiente URL:
+[generator-api.vercel.app](https://generator-api.vercel.app/api/v1)
+- Autenticación y Autorización: La API implementa un sistema de autenticación y autorización utilizando JWT (JSON Web Tokens).
+- Gestión de Roles: Existen dos roles de usuario: "Usuario Regular" y "Administrador". Los usuarios regulares tienen acceso a consultar la lista de películas y los detalles de una película específica. Los administradores pueden crear, actualizar y eliminar películas.
+- Población de la Base de Datos: La API realiza una única solicitud a la API pública de Star Wars para popular la base de datos de películas. Esta información se mantiene en la base de datos y puede ser editada por los administradores.
 
-## Description
+## Endpoints de la API:
+- Registro de usuarios
+- Inicio de sesión de usuarios y obtención de token de acceso
+- Obtener la lista de películas
+- Obtener los detalles de una película específica
+- Crear una nueva película (solo administradores)
+- Actualizar la información de una película existente (solo administradores)
+- Eliminar una película (solo administradores)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
+  
+## Instalación y Ejecución Local
+## Clonar el repositorio:
+```bash
+git clone https://github.com/tu-usuario/films-generator-api.git
+```
+## Instalar dependencias
 ```bash
 $ pnpm install
 ```
+## Configurar las variables de entorno basandóse en el archivo .env.example
 
-## Running the app
-
+```bash
+#<------------- NODE VARIABLES ------------->
+NODE_ENV= 'development'
+NODE_PORT=3000
+#<------------- DATABASE VARIABLES ------------->
+MONGODB_CONNECT=mongodb
+MONGODB_URI=
+MONGODB_NAME=
+#<------------- BCRYPT VARIABLES ------------->
+HASH_ROUNDS= 10
+#<------------- RATE LIMIT VARIABLES ------------->
+RATE_LIMIT_TTL=1000
+RATE_LIMIT_COUT=10
+#<------------- JWT VARIABLES ------------->
+JWT_SECRET=
+```
+## Inicio de aplicación
 ```bash
 # development
 $ pnpm run start
