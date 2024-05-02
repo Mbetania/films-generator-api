@@ -5,7 +5,7 @@ Films Generator API es una aplicación backend desarrollada con NestJS que permi
 
 ## Características principales:
 - La API está desplegada en Vercel y se puede acceder en la siguiente URL:
-[generator-api.vercel.app](https://generator-api.vercel.app/api/v1)
+[generator-api.vercel.app](https://generator-api-mbetania-mbetanias-projects.vercel.app/api/v1)
 - Autenticación y Autorización: La API implementa un sistema de autenticación y autorización utilizando JWT (JSON Web Tokens).
 - Gestión de Roles: Existen dos roles de usuario: "Usuario Regular" y "Administrador". Los usuarios regulares tienen acceso a consultar la lista de películas y los detalles de una película específica. Los administradores pueden crear, actualizar y eliminar películas.
 - Población de la Base de Datos: La API realiza una única solicitud a la API pública de Star Wars para popular la base de datos de películas. Esta información se mantiene en la base de datos y puede ser editada por los administradores.
