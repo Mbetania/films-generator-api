@@ -1,10 +1,41 @@
 import { Module } from '@nestjs/common';
+import { ThrottlerModule } from '@nestjs/throttler';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import {
+  AuthModule,
+  BcryptModule,
+  FilmModule,
+  JWTModule,
+  MongoDBModule,
+  StarwarsModule,
+} from './infrastructure';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
-  imports: [],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      cache: true,
+      expandVariables: true,
+    }),
+    ThrottlerModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => [
+        {
+          ttl: config.get('RATE_LIMIT_TTL'),
+          limit: config.get('RATE_LIMIT_COUT'),
+        },
+      ],
+    }),
+    MongoDBModule,
+    BcryptModule,
+    JWTModule,
+    AuthModule,
+    FilmModule,
+    StarwarsModule,
+  ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [],
 })
 export class AppModule {}
