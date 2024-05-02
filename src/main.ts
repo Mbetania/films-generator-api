@@ -22,7 +22,7 @@ async function bootstrap() {
   app.useGlobalPipes(AppValidationPipe);
   app.useGlobalFilters(new HttpExceptionsFilter(httpAdapter, configService));
   app.setGlobalPrefix('api');
-  app.enableVersioning({ type: VersioningType.URI, defaultVersion: '3' });
+  app.enableVersioning({ type: VersioningType.URI, defaultVersion: '1' });
 
   const NODE_PORT = configService.get<string>('NODE_PORT');
   const NODE_ENV = configService.get<string>('NODE_ENV');
