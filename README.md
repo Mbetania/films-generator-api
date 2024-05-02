@@ -23,7 +23,7 @@ Films Generator API es una aplicación backend desarrollada con NestJS que permi
 ## Instalación y Ejecución Local
 ## Clonar el repositorio:
 ```bash
-git clone https://github.com/tu-usuario/films-generator-api.git
+git clone https://github.com/Mbetania/films-generator-api.git
 ```
 ## Instalar dependencias
 ```bash
